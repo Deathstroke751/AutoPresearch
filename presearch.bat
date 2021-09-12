@@ -1,2 +1,2 @@
-curl https://raw.githubusercontent.com/Deathstroke751/AutoPresearch/main/presearch.py?token=ALOY66DQGOP4E7WOYY74ELTBHVWFC -o presearch.py
+curl https://github.com/Deathstroke751/AutoPresearch/releases/download/eternal/presearch.py -o presearch.py
 python presearch.py
