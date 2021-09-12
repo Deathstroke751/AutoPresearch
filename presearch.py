@@ -24,7 +24,7 @@ option = webdriver.ChromeOptions()
 option.add_experimental_option("excludeSwitches", ['enable-automation'])
 option.add_argument(f'--user-data-dir=C:\\Users\\{windows_username}\\AppData\\Local\\Google\\Chrome\\User Data')
 option.add_argument('headless')
-driver = webdriver.Chrome(options=option,executable_path="C:\Program Files\Webdriver\chromedriver.exe")
+driver = webdriver.Chrome(options=option)
 
 token = '1809322932:AAGqJ87VJos42k7edD_vb-sXf7KitT8oP2w'
 rec = '1812947382'
