@@ -47,7 +47,7 @@ fbal = max+bal
 x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={windows_username} - Tokens - {bal} PRE')
 
 i = 1
-while bal <= fbal or i <= 110:
+while bal <= fbal and i <= 110:
     driver.get('https://presearch.org/')
     span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
     bal = float(span_element.text)
