@@ -24,7 +24,7 @@ option = webdriver.ChromeOptions()
 option.add_experimental_option("excludeSwitches", ['enable-automation'])
 option.add_argument(f'--user-data-dir=C:\\Users\\{windows_username}\\AppData\\Local\\Google\\Chrome\\User Data')
 option.add_argument('headless')
-driver = webdriver.Chrome(options=option)
+driver = webdriver.Chrome(options=option,executable_path="C:\Program Files\Webdriver\chromedriver.exe")
 
 token = '1809322932:AAGqJ87VJos42k7edD_vb-sXf7KitT8oP2w'
 rec = '1812947382'
@@ -41,12 +41,13 @@ max = float(tps)*float(mspd)
 driver.get('https://presearch.org/')
 span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
 bal = float(span_element.text)
+
 fbal = max+bal
 
 x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={windows_username} - Tokens - {bal} PRE')
 
-i =1
-while bal <= fbal:
+i = 1
+while bal <= fbal or i <= 110:
     driver.get('https://presearch.org/')
     span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
     bal = float(span_element.text)
