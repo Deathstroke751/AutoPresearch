@@ -42,9 +42,14 @@ driver.get('https://presearch.org/')
 span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
 bal = float(span_element.text)
 
+#Get Email
+driver.get('https://presearch.org/account')
+eml = driver.find_element_by_xpath('//*[@id="main"]/div[1]/p/a')
+email = str(eml.text)
+
 fbal = max+bal
 
-x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={windows_username} - Tokens - {bal} PRE. Max - {fbal}')
+x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={email} - {windows_username} - Tokens - {bal} PRE. Max - {fbal}')
 
 i = 1
 while bal < fbal and i <= 110:
@@ -63,5 +68,5 @@ driver.get('https://presearch.org/')
 span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
 bal = float(span_element.text)
 print('\007')
-x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={windows_username} - Max Search Achieved. Tokens - {bal} PRE')
+x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={email} - {windows_username} - Max Search Achieved. Tokens - {bal} PRE')
 driver.quit()
