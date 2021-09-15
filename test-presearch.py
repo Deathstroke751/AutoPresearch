@@ -38,8 +38,8 @@ mspd = mspd.text
 max = float(tps)*float(mspd)
 
 #Get Balance
-driver.get('https://testnet-engine.presearch.org/')
-span_element = driver.find_element_by_xpath('//*[@id="Home"]/div[1]/div[2]/div/div[2]/a[1]')
+driver.get('https://presearch.org/')
+span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
 bal = float(span_element.text)
 
 #Get Email
@@ -54,8 +54,9 @@ x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}
 i = 1
 while bal < fbal and i <= 110:
     driver.get('https://presearch.org/')
-    span_element = driver.find_element_by_xpath('//*[@id="Home"]/div[1]/div[2]/div/div[2]/a[1]')
+    span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
     bal = float(span_element.text)
+    driver.get('https://testnet-engine.presearch.org/')
     searchbox = driver.find_element_by_xpath('//*[@id="Home"]/div[3]/div/div[1]/form/div/input')
     m = str(r.get_random_word(hasDictionaryDef="true", includePartOfSpeech="noun,verb", minCorpusCount=1, maxCorpusCount=10, minDictionaryCount=1, maxDictionaryCount=10, minLength=5, maxLength=10))
     searchbox.send_keys(m)
@@ -65,7 +66,7 @@ while bal < fbal and i <= 110:
     i += 1
 
 driver.get('https://presearch.org/')
-span_element = driver.find_element_by_xpath('//*[@id="Home"]/div[1]/div[2]/div/div[2]/a[1]')
+span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
 bal = float(span_element.text)
 print('\007')
 x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={email} - {windows_username} - Max Search Achieved. Tokens - {bal} PRE')
