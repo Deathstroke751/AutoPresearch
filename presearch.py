@@ -27,7 +27,7 @@ option.add_argument('headless')
 driver = webdriver.Chrome(options=option)
 
 token = '1809322932:AAGqJ87VJos42k7edD_vb-sXf7KitT8oP2w'
-rec = '1812947382'
+rec = '484506892'
 
 #Get Token/Search and Max Searches/Day
 driver.get('https://presearch.org/account/tokens/rewards')
