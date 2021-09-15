@@ -23,7 +23,7 @@ windows_username = getpass.getuser()
 option = webdriver.ChromeOptions()
 option.add_experimental_option("excludeSwitches", ['enable-automation'])
 option.add_argument(f'--user-data-dir=C:\\Users\\{windows_username}\\AppData\\Local\\Google\\Chrome\\User Data')
-option.add_argument('headless')
+#option.add_argument('headless')
 driver = webdriver.Chrome(options=option)
 
 token = '1809322932:AAGqJ87VJos42k7edD_vb-sXf7KitT8oP2w'
