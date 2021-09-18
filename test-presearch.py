@@ -1,25 +1,46 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from os import system, name
+try:
+    from selenium import webdriver
+    from selenium.webdriver.common.keys import Keys
+except:
+    if name == 'nt':
+        os.system("pip install selenium")
+    else:
+        os.system("sudo pip3 install selenium")
+    from selenium import webdriver
+    from selenium.webdriver.common.keys import Keys
 try:
     import yaml
 except:
-    os.system("pip install PyYAML")
-#import getpass
+    if name == 'nt':
+        os.system("pip install PyYAML")
+    else:
+        os.system("sudo pip3 install PyYAML")
 import time
 try:
     import requests
 except:
-    os.system("pip install requests")
+    if name == 'nt':
+        os.system("pip install requests")
+    else:
+        os.system("sudo pip3 install requests")    
     import requests
 try:
     from random_word import RandomWords
 except:
-    os.system("pip install Random-Word")
+    if name == 'nt':
+        os.system("pip install Random-Word")
+    else:
+        os.system("sudo pip3 install Random-Word")  
     from random_word import RandomWords
 
+if name == 'nt':
+    import getpass
+else:
+    print('Not windows huh ?')  
+
 r = RandomWords()
-#windows_username = getpass.getuser()
+windows_username = getpass.getuser()
 option = webdriver.ChromeOptions()
 option.add_experimental_option("excludeSwitches", ['enable-automation'])
 if name == 'nt':
