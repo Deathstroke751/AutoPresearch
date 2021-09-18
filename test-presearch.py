@@ -1,4 +1,3 @@
-import os
 from os import system, name
 try:
     from selenium import webdriver
