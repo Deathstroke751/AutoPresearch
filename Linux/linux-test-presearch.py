@@ -9,7 +9,7 @@ r = RandomWords()
 
 option = webdriver.ChromeOptions()
 option.add_experimental_option("excludeSwitches", ['enable-automation'])
-option.add_argument(f'/home/user/.config/chrome-remote-desktop/chrome-config/google-chrome')
+option.add_argument(f'--user-data-dir=/home/user/.config/chrome-remote-desktop/chrome-config/google-chrome')
 option.add_argument('headless')
 driver = webdriver.Chrome(options=option)
 
