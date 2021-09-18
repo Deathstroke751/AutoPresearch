@@ -1,11 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import os
+from os import system, name
 try:
     import yaml
 except:
     os.system("pip install PyYAML")
-import getpass
+#import getpass
 import time
 try:
     import requests
@@ -19,7 +19,7 @@ except:
     from random_word import RandomWords
 
 r = RandomWords()
-windows_username = getpass.getuser()
+#windows_username = getpass.getuser()
 option = webdriver.ChromeOptions()
 option.add_experimental_option("excludeSwitches", ['enable-automation'])
 if name == 'nt':
@@ -53,7 +53,7 @@ email = str(eml.text)
 
 fbal = max+bal
 
-x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={email} - {windows_username} - Tokens - {bal} PRE. Max - {fbal}')
+x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={email} - Tokens - {bal} PRE. Max - {fbal}')
 
 i = 1
 while bal < fbal and i <= 110:
@@ -72,5 +72,5 @@ driver.get('https://presearch.org/')
 span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
 bal = float(span_element.text)
 print('\007')
-x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={email} - {windows_username} - Max Search Achieved. Tokens - {bal} PRE')
+x = requests.get(f'https://api.telegram.org/bot{token}/sendMessage?chat_id={rec}&text={email} - Max Search Achieved. Tokens - {bal} PRE')
 driver.quit()
