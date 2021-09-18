@@ -46,7 +46,7 @@ option.add_experimental_option("excludeSwitches", ['enable-automation'])
 if name == 'nt':
 	option.add_argument(f'--user-data-dir=C:\\Users\\{windows_username}\\AppData\\Local\\Google\\Chrome\\User Data')
 else:
-	option.add_argument(f'/home/user/.config/chrome-remote-desktop/chrome-config/google-chrome')
+	option.add_argument(f'--user-data-dir=/home/user/.config/chrome-remote-desktop/chrome-config/google-chrome')
 option.add_argument('headless')
 driver = webdriver.Chrome(options=option)
 
