@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import yaml
 import requests
+import time
 from random_word import RandomWords
 
 r = RandomWords()
