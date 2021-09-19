@@ -4,13 +4,15 @@ from selenium.webdriver.common.keys import Keys
 import yaml
 import requests
 import time
+import getpass
 from random_word import RandomWords
 
 r = RandomWords()
+user = getpass.getuser() 
 
 option = webdriver.ChromeOptions()
 option.add_experimental_option("excludeSwitches", ['enable-automation'])
-option.add_argument(f'--user-data-dir=/home/user/.config/chrome-remote-desktop/chrome-config/google-chrome')
+option.add_argument(f'--user-data-dir=/home/{user}/.config/chrome-remote-desktop/chrome-config/google-chrome')
 option.add_argument('headless')
 driver = webdriver.Chrome(options=option)
 
