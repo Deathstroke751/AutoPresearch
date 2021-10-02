@@ -167,6 +167,8 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
 
     eval(compile(see(a), '<string>', 'exec'))
 
+    print(f"\nLogged in with {email}\nBalance - {bal}  Max - {fbal}\n")
+
     i = 1
     while bal < fbal and i <= 110:
         driver.get('https://presearch.org/')
@@ -178,7 +180,7 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
         searchbox.send_keys(m)
         searchbox.send_keys(Keys.RETURN)
         time.sleep(3)
-        print(f"Attempt : {i} with {m}")
+        print(f"Attempt : {i} with {m}",end="\r")
         i += 1
 
     driver.get('https://presearch.org/')

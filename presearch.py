@@ -92,7 +92,7 @@ def clear():
 
 clear()
 
-print(f"Logged in with {email}\n\n")
+print(f"Logged in with {email}\nBalance - {bal}  Max - {fbal}\n")
 
 i = 1
 while bal < fbal and i <= 110:
