@@ -28,7 +28,11 @@ driver = webdriver.Chrome(options=option)
 
 #Get Token/Search and Max Searches/Day
 driver.get('https://presearch.org/account/tokens/rewards')
-tps = driver.find_element_by_xpath('//*[@id="main"]/div[2]/div[1]/div[1]/div/div')
+try:
+    tps = driver.find_element_by_xpath('//*[@id="main"]/div[2]/div[1]/div[1]/div/div')
+except:
+    print("Check if you're logged in on Chrome.")
+    break
 mspd = driver.find_element_by_xpath('//*[@id="main"]/div[2]/div[1]/div[2]/div/div')
 tps = tps.text
 mspd = mspd.text
