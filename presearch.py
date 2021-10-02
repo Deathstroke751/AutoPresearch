@@ -92,6 +92,8 @@ def clear():
 
 clear()
 
+print(f"Logged in with {email}\n\n")
+
 i = 1
 while bal < fbal and i <= 110:
     driver.get('https://presearch.org/')
@@ -102,7 +104,10 @@ while bal < fbal and i <= 110:
     searchbox.send_keys(m)
     searchbox.send_keys(Keys.RETURN)
     #time.sleep(2)
-    sbtn = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[1]/div/form/div/div/button')
+    try:
+        sbtn = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[1]/div/form/div/div/button')
+    except:
+        time.sleep(1)
     print(f"Attempt : {i} with {m}")
     i += 1
 
