@@ -108,7 +108,7 @@ while bal < fbal and i <= 110:
         sbtn = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[1]/div/form/div/div/button')
     except:
         time.sleep(1)
-    print(f"Attempt : {i} with {m}")
+    print(f"Attempt : {i} with {m}",end="\r")
     i += 1
 
 driver.get('https://presearch.org/')
