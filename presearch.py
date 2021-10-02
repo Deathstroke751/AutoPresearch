@@ -58,6 +58,7 @@ if name == 'nt':
 else:
 	option.add_argument(f'--user-data-dir=/home/user/.config/chrome-remote-desktop/chrome-config/google-chrome')
 
+option.add_argument(fr'--profile-directory='Default'')
 option.add_argument('headless')
 option.add_argument('--log-level=1')
 driver = webdriver.Chrome(options=option)
