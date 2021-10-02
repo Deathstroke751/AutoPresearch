@@ -70,6 +70,7 @@ try:
     tps = driver.find_element_by_xpath('//*[@id="main"]/div[2]/div[1]/div[1]/div/div')
 except:
     print("Check if you're logged in on Chrome.")
+    time.sleep(5)
     break
 mspd = driver.find_element_by_xpath('//*[@id="main"]/div[2]/div[1]/div[2]/div/div')
 tps = tps.text
