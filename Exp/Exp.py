@@ -179,7 +179,11 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
                 maxCorpusCount=10, minDictionaryCount=1, maxDictionaryCount=10, minLength=5, maxLength=10))
         searchbox.send_keys(m)
         searchbox.send_keys(Keys.RETURN)
-        time.sleep(3)
+        #time.sleep(2)
+        try:
+            sbtn = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[1]/div/form/div/div/button')
+        except:
+            time.sleep(1)
         print(f"Attempt : {i} with {m}",end="\r")
         i += 1
 
