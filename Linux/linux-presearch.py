@@ -46,6 +46,14 @@ fbal = max+bal
 
 eval(compile(see(a), '<string>', 'exec'))
 
+def clear():
+    if name == 'nt':
+        os.system("cls")
+    else:
+        os.system("clear")
+        
+clear()
+
 i = 1
 while bal < fbal and i <= 110:
     driver.get('https://presearch.org/')
@@ -55,7 +63,8 @@ while bal < fbal and i <= 110:
     m = str(r.get_random_word(hasDictionaryDef="true", includePartOfSpeech="noun,verb", minCorpusCount=1, maxCorpusCount=10, minDictionaryCount=1, maxDictionaryCount=10, minLength=5, maxLength=10))
     searchbox.send_keys(m)
     searchbox.send_keys(Keys.RETURN)
-    time.sleep(3)
+    #time.sleep(2)
+    sbtn = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[1]/div/form/div/div/button')
     print(f"Attempt : {i} with {m}")
     i += 1
 
