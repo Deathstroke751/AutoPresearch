@@ -181,7 +181,7 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
         searchbox.send_keys(Keys.RETURN)
         #time.sleep(2)
         try:
-            time.sleep(1)
+            time.sleep(2)
             sbtn = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[1]/div/form/div/div/button')
         except:
             time.sleep(1)
