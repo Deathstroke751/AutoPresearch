@@ -165,11 +165,13 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
 
     fbal = max+bal
 
-    eval(compile(see(a), '<string>', 'exec'))
+    
 
     print(f"\nLOGGED IN WITH {email}\n BALANE - {bal}  MAX - {fbal}\n")
-    print("Continue ?\n")
+    print("Continue ?",end="\r")
     input()
+    print("PROGRESS\n\n")
+    eval(compile(see(a), '<string>', 'exec'))
 
     i = 1
     while bal < fbal and i <= 130:
