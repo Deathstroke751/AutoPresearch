@@ -172,7 +172,7 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     input()
 
     i = 1
-    while bal < fbal and i <= 120:
+    while bal < fbal and i <= 130:
         driver.get('https://presearch.org/')
         span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
         bal = float(span_element.text)
