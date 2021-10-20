@@ -36,10 +36,7 @@ except:
         os.system("sudo pip3 install Random-Word")  
     from random_word import RandomWords
 
-if name == 'nt':
-    import getpass
-else:
-    print('Not windows huh ?')  
+import getpass 
 
 r = RandomWords()
 user = getpass.getuser()
