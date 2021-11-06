@@ -6,9 +6,9 @@ try:
     from selenium.webdriver.common.keys import Keys
 except:
     if name == 'nt':
-        os.system("pip install selenium")
+        os.system("pip install selenium==3.141.0")
     else:
-        os.system("sudo pip3 install selenium")
+        os.system("sudo pip3 install selenium==3.141.0")
     from selenium import webdriver
     from selenium.webdriver.common.keys import Keys
 try:
