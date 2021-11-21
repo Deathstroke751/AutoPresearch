@@ -75,7 +75,7 @@ def meigwad(profile,user):
     driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
     time.sleep(1)
     driver.switch_to.alert.accept()
-    time.sleep(3)
+    time.sleep(1)
     driver.quit()
 
 def gwadmei(driver):
