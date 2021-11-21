@@ -129,17 +129,16 @@ def check(driver,mail,pwd,profile,user):
 def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
 
     try:
-        logout(driver)
+        meigwad(driver)
     except:
         driver.quit()
 
     try:
-        meigwad(driver)
+        logout(driver)
     except:
         driver.quit()
     
     login(mail,pwd,profile,user)
-
 
     #check(driver,mail,pwd,profile,user)
 
