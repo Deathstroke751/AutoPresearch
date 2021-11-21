@@ -93,6 +93,7 @@ def login(mail,pwd,profile,user):  # Login Module
             f'--user-data-dir=/home/{user}/.config/chrome-remote-desktop/chrome-config/google-chrome')
     # opt.add_argument('headless')
     opt.add_argument('--log-level=1')
+    opt.add_argument("--start-maximized")
     opt.add_argument(fr'--profile-directory={profile}')
     drv = webdriver.Chrome(options=opt)
 
