@@ -101,6 +101,7 @@ def logout(driver):
     driver.get('https://presearch.org')
     try:
         driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
+        time.sleep(1)
         press('enter')
     except:
         driver.find_element_by_xpath('//*[@id="user-menu-toggle"]').click()
@@ -210,9 +211,11 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     driver.get('https://presearch.org/')
     span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
     bal = float(span_element.text)
+    print(f"Search Completed : {i} attempts for {bal} PRE",end="")
     print('\007')
     eval(compile(see(b), '<string>', 'exec'))
     driver.quit()
+    exit()
 
 
 def open(profile, user):  # Opens Browser
