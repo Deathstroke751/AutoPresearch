@@ -78,6 +78,11 @@ def meigwad(profile,user):
     time.sleep(3)
     driver.quit()
 
+def gwadmei(driver):
+    driver.get('https://presearch.org/')
+    driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
+    time.sleep(1)
+    driver.switch_to.alert.accept()
 
 def login(mail,pwd,profile,user):  # Login Module
     print(f"Not Logged In.\n\nLogging In\nYour email - {mail}\nYour Password - {pwd}\n")
@@ -104,6 +109,7 @@ def login(mail,pwd,profile,user):  # Login Module
     print("\n*****Possible Irrelevant Errors*****\n\nPress any key after clicking remember & finishing captcha\n\n*****Possible Irrelevant Errors*****\n")
     input()
     drv.find_element_by_xpath('//*[@id="login-form"]/form/div[3]/div[3]/button').click()
+    gwadmei(drv)
     time.sleep(2)
     drv.quit()
 
@@ -168,10 +174,6 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     login(mail,pwd,profile,user)
 
     #check(driver,mail,pwd,profile,user)
-    try:
-        meigwad(profile,user)
-    except:
-        driver.quit()
 
     #Start Initialize x2
     option = webdriver.ChromeOptions()
