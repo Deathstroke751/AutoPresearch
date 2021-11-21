@@ -3,6 +3,16 @@ import os
 from os import system, name
 from base64 import b64decode, b64encode
 import getpass
+
+try:
+    from keyboard import press
+except:
+    if name == 'nt':
+        os.system("pip install keyboard")
+    else:
+        os.system("sudo pip3 install keyboard")
+    from keyboard import press
+    
 try:
     from selenium import webdriver
     from selenium.webdriver.common.keys import Keys
@@ -91,6 +101,7 @@ def logout(driver):
     driver.get('https://presearch.org')
     try:
         driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
+        press('enter')
     except:
         driver.find_element_by_xpath('//*[@id="user-menu-toggle"]').click()
         driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[6]/ul/li[9]/a').click()
