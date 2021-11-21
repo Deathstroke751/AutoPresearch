@@ -75,13 +75,9 @@ def meigwad(profile,user):
     driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
     time.sleep(1)
     driver.switch_to.alert.accept()
-    time.sleep(1)
+    time.sleep(3)
     driver.quit()
 
-def gwadmei(driver):
-    driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
-    time.sleep(1)
-    driver.switch_to.alert.accept()
 
 def login(mail,pwd,profile,user):  # Login Module
     print(f"Not Logged In.\n\nLogging In\nYour email - {mail}\nYour Password - {pwd}\n")
@@ -159,10 +155,10 @@ def check(driver,mail,pwd,profile,user):
 
 def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
 
-    #try:
-    #    meigwad(profile,user)
-    #except:
-    #    driver.quit()
+    try:
+        meigwad(profile,user)
+    except:
+        driver.quit()
 
     try:
         logout(profile,user)
@@ -172,6 +168,10 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     login(mail,pwd,profile,user)
 
     #check(driver,mail,pwd,profile,user)
+    try:
+        meigwad(profile,user)
+    except:
+        driver.quit()
 
     #Start Initialize x2
     option = webdriver.ChromeOptions()
