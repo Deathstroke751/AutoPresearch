@@ -168,6 +168,10 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     login(mail,pwd,profile,user)
 
     #check(driver,mail,pwd,profile,user)
+    try:
+        meigwad(profile,user)
+    except:
+        driver.quit()
 
     #Start Initialize x2
     option = webdriver.ChromeOptions()
