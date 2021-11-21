@@ -4,8 +4,6 @@ from os import system, name
 from base64 import b64decode, b64encode
 import getpass
 
-from keyboard import send
-
 try:
     from keyboard import press
 except:
