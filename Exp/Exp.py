@@ -254,7 +254,7 @@ def open(profile, user):  # Opens Browser
     driver = webdriver.Chrome(options=option)
     
     pre(driver,mail,pwd)
-    logout(driver)
+    logout(profile,user)
 
 
 
