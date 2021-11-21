@@ -234,6 +234,7 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
     bal = float(span_element.text)
     print('\007')
+    print("Done.")
     eval(compile(see(b), '<string>', 'exec'))
     driver.quit()
 
