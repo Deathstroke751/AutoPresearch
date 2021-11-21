@@ -89,9 +89,12 @@ def login(mail,pwd,profile,user):  # Login Module
 
 def logout(driver):
     driver.get('https://presearch.org')
-    driver.find_element_by_xpath('//*[@id="user-menu-toggle"]').click()
-    driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[6]/ul/li[9]/a').click()
-    driver.quit()
+    try:
+        driver.find_element_by_xpath('/html/body/div[5]/div/div[5]/a[1]').click()
+    except:
+        driver.find_element_by_xpath('//*[@id="user-menu-toggle"]').click()
+        driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[6]/ul/li[9]/a').click()
+        driver.quit()
 
 def check(driver,mail,pwd,profile,user):
     try:
