@@ -207,7 +207,7 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
 
     fbal = max+bal
     fbal = "{:.3f}".format(fbal)
-    
+    fbal = float(fbal)
 
     print(f"\nLOGGED IN WITH {email}\n BALANE - {bal}  MAX - {fbal}\n")
     print("Continue ?",end="\r")

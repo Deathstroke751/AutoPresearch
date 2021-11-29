@@ -86,6 +86,7 @@ email = str(eml.text)
 
 fbal = max+bal
 fbal = "{:.3f}".format(fbal)
+fbal = float(fbal)
 eval(compile(see(a), '<string>', 'exec'))
 
 def clear():
