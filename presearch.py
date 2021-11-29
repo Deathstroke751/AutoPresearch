@@ -85,7 +85,7 @@ eml = driver.find_element_by_xpath('//*[@id="main"]/div[1]/p/a')
 email = str(eml.text)
 
 fbal = max+bal
-
+fbal = "{:.3f}".format(fbal)
 eval(compile(see(a), '<string>', 'exec'))
 
 def clear():

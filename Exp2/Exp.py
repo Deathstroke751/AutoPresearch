@@ -194,7 +194,7 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     tps = tps.text
     mspd = mspd.text
     max = float(tps)*float(mspd)
-
+    
     # Get Balance
     driver.get('https://presearch.org/')
     span_element = driver.find_element_by_xpath('//*[@id="main-nav"]/ul/li[5]/a/span/span')
@@ -206,7 +206,7 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     email = str(eml.text)
 
     fbal = max+bal
-
+    fbal = "{:.3f}".format(fbal)
     
 
     print(f"\nLOGGED IN WITH {email}\n BALANE - {bal}  MAX - {fbal}\n")
