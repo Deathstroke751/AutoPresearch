@@ -1,4 +1,0 @@
-selenium
-PyYAML
-requests
-Random-Word
