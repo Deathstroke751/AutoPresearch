@@ -95,6 +95,15 @@ def clear():
     else:
         os.system("clear")
 
+try:
+	driver.get('https://engine.presearch.org/search?q=btc')
+	buttoos = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[3]/div[3]/div/div[2]/div[1]')
+	driver.implicitly_wait(3)
+	ActionChains(driver).move_to_element(buttoos).click(buttoos).perform()
+	time.sleep(2)
+except:
+	print('meh')
+	
 clear()
 
 print(f"Logged in with {email}\nBalance - {bal}  Max - {fbal}\n")
