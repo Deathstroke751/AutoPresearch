@@ -108,6 +108,10 @@ def login(mail,pwd,profile,user):  # Login Module
     print("\n*****Possible Irrelevant Errors*****\n\nPress any key after clicking remember & finishing captcha\n\n*****Possible Irrelevant Errors*****\n")
     input()
     drv.find_element_by_xpath('//*[@id="login-form"]/form/div[3]/div[3]/button').click()
+    driver.get('https://engine.presearch.org/search?q=btc')
+    buttoos = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[3]/div[3]/div/div[2]/div[1]')
+    driver.implicitly_wait(3)
+    ActionChains(driver).move_to_element(buttoos).click(buttoos).perform()
     time.sleep(2)
     drv.quit()
 
