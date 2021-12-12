@@ -11,6 +11,7 @@ except:
         os.system("sudo pip3 install selenium==3.141.0")
     from selenium import webdriver
     from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains	
 try:
     import yaml
 except:
